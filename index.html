@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sudoku</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/vue.js"></script>
+	<script src="js/main.js"></script>
+</head>
+<body>
+	<header></header>
+	<main>
+		<div class="middle">
+			<div class="menu"></div>
+			<div class="panel">
+				<block v-for="(block,b_index) in data_q" :block="block" >
+					
+				</block>
+			</div>
+		</div>
+		<div class="btns"></div>
+	</main>
+	<footer></footer>
+</body>
+</html>

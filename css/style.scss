@@ -1,0 +1,57 @@
+$cell-border-color:#c8e8f9;
+$block-border-color:#16445e;
+$font-color:#0f6b9e;
+$bg-color:#68a9bc;
+*{
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+}
+body{
+	background:$bg-color;
+}
+main{
+	width:990px;
+	margin:0 auto;
+}
+.middle{
+	display:flex;
+	justify-content:space-around;
+}
+.menu{
+	width:287px;
+	height:600px;
+	border:1px solid red;
+}
+.panel{
+	color:$font-color;
+	background:#fff;
+	font-size:33px;
+	text-align:center;
+	width:226*3px;
+	height:226*3px;
+	display:flex;
+	flex-wrap:wrap;
+}
+.block{
+	width:74*3+4px;
+	height:74*3+4px;
+	border:2px solid $block-border-color;
+	flex-shrink:0;
+	display:flex;
+	flex-wrap:wrap;
+}
+.cell{
+	width:74px;
+	height:74px;
+	line-height:74px;
+	border:1px solid $cell-border-color;
+	flex-shrink:0;
+	background:url(../img/cell-g.png);
+	&:hover{
+		background-color:rgba(255,255,0,0.2);
+	}
+}
+.cell.blank{
+	background-image:none;
+}
