@@ -16,7 +16,7 @@ window.onload=function(){
 			}
 		},
 		template:`<div class="block">
-					<cell v-for="cell in block" :cell="cell"></cell>
+					<cell v-for="(cell,index) in block" :cid="index" :cell="cell"></cell>
 				</div>`,
 	})
 	Vue.component('cell',{
@@ -25,11 +25,11 @@ window.onload=function(){
 				type:Number
 			}
 		},
-		template:`<div @keyup="key" class="cell" :class="{blank:cell==0}">
+		template:`<div @click="click" class="cell" :class="{blank:cell==0}">
 					<span v-if="cell!=0">{{cell}}</span>
 				</div>`,
 		methods:{
-			key:function(e){
+			click:function(e){
 				console.log(e)
 			}
 		}
@@ -39,7 +39,9 @@ window.onload=function(){
 		el:'.panel',
 		data:{
 			data_q,
-			data_a
+			data_a,
+			current_bid:0,
+			current_cid:0
 		}
 	})
 }
