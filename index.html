@@ -4,21 +4,39 @@
 	<meta charset="UTF-8">
 	<title>Sudoku</title>
 	<link rel="stylesheet" href="css/style.css">
-	<script src="js/vue.js"></script>
+	<link rel="stylesheet" href="css/font-awesome.css">
+	<!-- <script src="js/vue.js"></script> -->
 	<script src="js/main.js"></script>
 </head>
 <body>
-	<header></header>
 	<main>
-		<div class="middle">
-			<div class="menu"></div>
-			<div class="panel">
-				<block v-for="(block,b_index) in data_q" :block="block" >
-					
-				</block>
+		<div class='header'>
+			<span class="timer">12:30:50</span>
+			<span class="fa fa-pause-circle-o"></span>
+		</div>
+		<div class="panel"></div>
+		<div class="btns">
+			<button>1</button>
+			<button>2</button>
+			<button>3</button>
+			<button>4</button>
+			<button>5</button>
+			<button>6</button>
+			<button>7</button>
+			<button>8</button>
+			<button>9</button>
+		</div>
+		<div class="menu">
+			<button class='btn block'></button>
+			<button class='btn show-i'></button>
+			<button class='btn show-g'></button>
+			<button class='btn hint'></button>
+			<button class='btn menu'></button>
+			<div>
+				<button class='btn-s erase'></button>
+				<button class='btn-s notes'></button>
 			</div>
 		</div>
-		<div class="btns"></div>
 	</main>
 	<footer></footer>
 </body>
