@@ -429,9 +429,21 @@ window.onload=function(){
 	}
 	function calcTime(){
 		seconds++;
-		var hour=Math.floor(seconds/3600).toString().padStart(2,'0');
-		var minute=Math.floor(seconds%3600/60).toString().padStart(2,'0');
-		var second=Math.floor(seconds%3600%60).toString().padStart(2,'0')
+		var hour=Math.floor(seconds/3600).toString();
+		var minute=Math.floor(seconds%3600/60).toString();
+		var second=Math.floor(seconds%3600%60).toString()
+		if(String.prototype.padStart){
+			hour=hour.padStart(2,'0')
+			minute=minute.padStart(2,'0')
+			second=second.padStart(2,'0')
+		}else{
+			if(hour.length<2)
+				hour='0'+hour;
+			if(minute.length<2)
+				minute='0'+minute;
+			if(second.length<2)
+				second='0'+second;
+		}
 		var time=document.querySelector('.time');
 		time.innerHTML=`${hour}:${minute}:${second}`
 	}
