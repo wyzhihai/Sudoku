@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sudoku</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/font-awesome.css">
+	<link rel="stylesheet" href="css/help.css">
+	<link rel="stylesheet" href="css/pause.css">
+	<link rel="stylesheet" href="css/restart.css">
+	<!-- <script src="js/vue.js"></script> -->
+	<script src="js/main.js"></script>
+</head>
+<body>
+	<main>
+		<div class='header'>
+			<span class="link">
+				<a class="back fa fa-arrow-circle-o-left" href="javascript:void(0)"></a>
+				<a class='pause fa fa-pause-circle-o' href="javascript:void(0)"></a>
+			</span>
+			<span class="time">00:00:00</span>
+		</div>
+		<div class="panel"></div>
+		<div class="btns">
+			<button data-id='1'>1<span>0</span></button>
+			<button data-id='2'>2<span>0</span></button>
+			<button data-id='3'>3<span>0</span></button>
+			<button data-id='4'>4<span>0</span></button>
+			<button data-id='5'>5<span>0</span></button>
+			<button data-id='6'>6<span>0</span></button>
+			<button data-id='7'>7<span>0</span></button>
+			<button data-id='8'>8<span>0</span></button>
+			<button data-id='9'>9<span>0</span></button>
+		</div>
+		<div class="menu">
+			<button data-inverse="0" class='btn block'></button>
+			<button data-inverse="0" class='btn show-i'></button>
+			<button class='btn show-g'></button>
+			<button class='btn hint' data-count='3'>&times;3</button>
+			<button class='btn help'>Quick Help</button>
+			<button class='btn restart'>
+				<span class="fa fa-share-square-o"></span>
+				<span class="txt">Restart</span>
+			</button>
+			<button class='btn new-game'>
+				<span class="fa fa-sign-in"></span>
+				<span class="txt">New Game</span>
+			</button>
+			<div>
+				<button data-inverse="0" class='btn-s erase'></button>
+				<button data-inverse="0" class='btn-s notes'></button>
+			</div>
+		</div>
+	</main>
+	<div class="cover">
+		<div class="dialog">
+			<h1>Sudoku Quick Help</h1>
+			<ul>
+				<li>Sudoku is a puzzle game with numbers and a 9&times;9 grid.</li>
+				<li>The goal is to fill the entire grid with numbers from 1-9 so that no number repeats itself in <br>any of the 9 rows,columns,or 9&times;3 houses.</li>
+				<li>Some numbers have been placed for you - this numbers cannot be changed.</li>
+			</ul>
+			<img src="img/quick-help.png" alt="">
+			<button class="close">OK</button>
+		</div>
+	</div>
+	<div class="pause-bg">
+		<div class="box">
+			<p class="title">Sudoku Paused</p>
+			<p class="desc">Game paused. Press "Resume" to continue game</p>
+			<button class='resume'>Resume</button>
+		</div>
+	</div>
+	<div class="container">
+		<div class="dialog">
+			<div class="title">Restart Game</div>
+			<div class="content">
+				<h2>Restart Game</h2>
+				<p class='question'>This will abandon your current game. Are you sure?</p>
+			</div>
+			<button class='yes'>Yes</button><button class="no">No</button>
+		</div>
+	</div>
+</body>
+</html>

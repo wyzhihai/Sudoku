@@ -1,7 +1,8 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  font-family: 'Microsoft YaHei'; }
 
 body {
   background: #68a9bc; }
@@ -9,17 +10,18 @@ body {
 @media screen and (min-width: 990px) {
   main {
     width: 990px;
+    padding-top: 50px;
     position: relative; }
 
   .header {
     position: absolute;
     left: 50px;
-    top: 80px; }
-    .header .fa {
+    top: 30px; }
+    .header .link {
       display: block; }
 
   .menu {
-    width: 287px;
+    width: 275px;
     height: 760px;
     flex-direction: column;
     align-items: center;
@@ -41,10 +43,17 @@ main {
 
 .header {
   font-size: 46px;
-  color: #fff;
   text-align: center;
-  line-height: 100px; }
+  line-height: 100px;
+  color: #fff; }
+  .header .back {
+    float: left; }
+  .header .pause {
+    float: right; }
   .header .fa {
+    margin-top: 20px;
+    color: #fff;
+    text-decoration: none;
     font-size: 60px;
     vertical-align: -3px; }
 
@@ -63,7 +72,10 @@ main {
   margin-top: 12px;
   display: flex;
   justify-content: space-between; }
+  .btns .tips {
+    box-shadow: inset 0 0 5px 4px #605ca8; }
   .btns button {
+    position: relative;
     width: 65px;
     height: 66px;
     outline: none;
@@ -72,8 +84,17 @@ main {
     color: #0f6b9e;
     border-radius: 6px;
     background: url(../img/number.png); }
+    .btns button span {
+      position: absolute;
+      font-size: 24px;
+      right: 5px;
+      top: 5px;
+      display: none; }
     .btns button:active {
       filter: brightness(1.5); }
+
+.show-note button span {
+  display: block; }
 
 .menu {
   display: flex;
@@ -88,24 +109,46 @@ main {
       filter: brightness(1.5); }
   .menu .btn {
     width: 241px;
-    height: 60px; }
-    .menu .btn:nth-child(1) {
-      background: url(../img/block.png); }
-    .menu .btn:nth-child(2) {
-      background: url(../img/incorrect.png); }
-    .menu .btn:nth-child(3) {
-      background: url(../img/guides.png); }
-    .menu .btn:nth-child(4) {
-      background: url(../img/hint.png); }
-    .menu .btn:nth-child(5) {
-      background: url(../img/menu.png); }
+    height: 60px;
+    text-align: left;
+    padding-left: 10px; }
+    .menu .btn .fa {
+      font-size: 60px;
+      color: #01639b;
+      vertical-align: middle; }
+    .menu .btn .txt {
+      font-size: 16px;
+      color: #0f6b9e;
+      line-height: 60px;
+      margin-left: 26px; }
+  .menu .block {
+    background: url(../img/block.png); }
+  .menu .show-i {
+    background: url(../img/incorrect.png); }
+  .menu .show-g {
+    background: url(../img/guides.png); }
+  .menu .hint {
+    font-size: 18px;
+    color: #0f6b9e;
+    text-align: right;
+    padding-right: 10px;
+    background: url(../img/hint.png); }
+  .menu .help {
+    color: #0f6b9e;
+    font-size: 16px;
+    padding-left: 95px;
+    background: url(../img/help.png); }
+  .menu .restart {
+    background: url(../img/restart.png); }
+  .menu .new-game {
+    background: url(../img/newgame.png); }
   .menu .btn-s {
     width: 132px;
     height: 65px; }
-    .menu .btn-s:nth-child(1) {
-      background: url(../img/erase.png); }
-    .menu .btn-s:nth-child(2) {
-      background: url(../img/notes.png); }
+  .menu .erase {
+    background: url(../img/erase.png); }
+  .menu .notes {
+    background: url(../img/notes.png); }
 
 .block {
   width: 226px;
@@ -131,8 +174,36 @@ main {
     width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 0, 0.2); }
+  .cell .cross {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; }
+    .cell .cross:before {
+      position: absolute;
+      display: block;
+      content: '';
+      left: 50%;
+      width: 3px;
+      height: 100%;
+      background: #951727;
+      transform: rotate(45deg); }
+    .cell .cross:after {
+      position: absolute;
+      display: block;
+      content: '';
+      left: 50%;
+      width: 3px;
+      height: 100%;
+      background: #951727;
+      transform: rotate(-45deg); }
 
 .cell.masked .mask {
+  display: block; }
+
+.cell.incorrect .cross {
   display: block; }
 
 .cell.fixed {

@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+html, body {
+  width: 100%;
+  height: 100%; }
+
+.container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center; }
+  .container .dialog {
+    position: relative;
+    width: 683px;
+    height: 194px;
+    padding: 5px 10px;
+    background: #fff;
+    border: 1px solid #1883d7; }
+    .container .dialog .content {
+      padding: 10px; }
+      .container .dialog .content h2 {
+        line-height: 50px; }
+  .container button {
+    position: absolute;
+    bottom: 24px;
+    width: 90px;
+    height: 32px;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    font-size: 16px; }
+    .container button:active {
+      color: #fff;
+      background: #000; }
+  .container .yes {
+    right: 140px;
+    color: #fff;
+    background: #00465e; }
+  .container .no {
+    right: 26px;
+    color: #333;
+    background: #ccc; }
+
+/*# sourceMappingURL=restart.css.map */

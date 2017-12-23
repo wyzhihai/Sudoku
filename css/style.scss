@@ -2,12 +2,16 @@ $cell-border-color:#c8e8f9;
 $block-border-color:#16445e;
 $mutable-inset-color:#51bc51;
 $fixed-inset-color:#42f7f5;
+$btn-inset-color:#605ca8;
 $font-color:#0f6b9e;
 $bg-color:#68a9bc;
+$cross-color:#951727;
+$icon-color:#01639b;
 *{
 	margin:0;
 	padding:0;
 	box-sizing:border-box;
+	font-family:'Microsoft YaHei';
 }
 body{
 	background:$bg-color;
@@ -15,18 +19,19 @@ body{
 @media screen and (min-width:990px){
 	main{
 		width:990px;
+		padding-top:50px;
 		position:relative
 	}
 	.header{
 		position:absolute;
 		left:50px;
-		top:80px;
-		.fa{
+		top:30px;
+		.link{
 			display:block;
 		}
 	}
 	.menu{
-		width:287px;
+		width:275px;
 		height:760px;
 		flex-direction:column;
 		align-items:center;
@@ -53,10 +58,19 @@ main{
 }
 .header{
 	font-size:46px;
-	color:#fff;
 	text-align:center;
 	line-height:100px;
+	color:#fff;
+	.back{
+		float:left;
+	}
+	.pause{
+		float:right;
+	}
 	.fa{
+		margin-top:20px;
+		color:#fff;
+		text-decoration:none;
 		font-size:60px;
 		vertical-align:-3px;
 	}
@@ -76,7 +90,11 @@ main{
 	margin-top:12px;
 	display:flex;
 	justify-content:space-between;
+	.tips{
+		box-shadow:inset 0 0 5px 4px $btn-inset-color;
+	}
 	button{
+		position:relative;
 		width:65px;
 		height:66px;
 		outline:none;
@@ -85,10 +103,20 @@ main{
 		color:$font-color;
 		border-radius:6px;
 		background:url(../img/number.png);
+		span{
+			position:absolute;
+			font-size:24px;
+			right:5px;
+			top:5px;
+			display:none;
+		}
 		&:active{
 			filter:brightness(1.5);
 		}
 	}
+}
+.show-note button span{
+	display:block;
 }
 .menu{
 	display:flex;
@@ -106,33 +134,58 @@ main{
 	.btn{
 		width:241px;
 		height:60px;
-		&:nth-child(1){
-			background:url(../img/block.png);
+		text-align:left;
+		padding-left:10px;
+		.fa{
+			font-size:60px;
+			color:$icon-color;
+			vertical-align:middle;
 		}
-		&:nth-child(2){
-			background:url(../img/incorrect.png);
+		.txt{
+			font-size:16px;
+			color:$font-color;
+			line-height:60px;
+			margin-left:26px;
 		}
-		&:nth-child(3){
-			background:url(../img/guides.png);
-		}
-		&:nth-child(4){
-			background:url(../img/hint.png);
-		}
-		&:nth-child(5){
-			background:url(../img/menu.png);
-		}
+	}
+	.block{
+		background:url(../img/block.png);
+	}
+	.show-i{
+		background:url(../img/incorrect.png);
+	}
+	.show-g{
+		background:url(../img/guides.png);
+	}
+	.hint{
+		font-size:18px;
+		color:$font-color;
+		text-align:right;
+		padding-right:10px;
+		background:url(../img/hint.png);
+	}
+	.help{
+		color:$font-color;
+		font-size:16px;
+		padding-left:95px;
+		background:url(../img/help.png);
+	}
+	.restart{
+		background:url(../img/restart.png);
+	}
+	.new-game{
+		background:url(../img/newgame.png);
 	}
 	.btn-s{
 		width:132px;
 		height:65px;
-		&:nth-child(1){
-			background:url(../img/erase.png);
-		}
-		&:nth-child(2){
-			background:url(../img/notes.png);
-		}
 	}
-	
+	.erase{
+		background:url(../img/erase.png);
+	}
+	.notes{
+		background:url(../img/notes.png);
+	}
 }
 .block{
 	width:74*3+4px;
@@ -141,6 +194,23 @@ main{
 	flex-shrink:0;
 	display:flex;
 	flex-wrap:wrap;
+}
+@mixin cover{
+	display:none;
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+}
+@mixin bar{
+	position:absolute;
+	display:block;
+	content:'';
+	left:50%;
+	width:3px;
+	height:100%;
+	background:$cross-color;
 }
 .cell{
 	position:relative;
@@ -151,16 +221,25 @@ main{
 	border-radius:8px;
 	flex-shrink:0;
 	.mask{
-		display:none;
-		position:absolute;
-		left:0;
-		top:0;
-		width:100%;
-		height:100%;
+		@include cover;
 		background-color:rgba(255,255,0,0.2);
+	}
+	.cross{
+		@include cover;
+		&:before{
+			@include bar;
+			transform:rotate(45deg);
+		}
+		&:after{
+			@include bar;
+			transform:rotate(-45deg);
+		}
 	}
 }
 .cell.masked .mask{
+	display:block;
+}
+.cell.incorrect .cross{
 	display:block;
 }
 .cell.fixed{
